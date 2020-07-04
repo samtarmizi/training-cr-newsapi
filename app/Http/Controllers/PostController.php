@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\BaseController as BaseController;
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+
+        // return response()->json([
+        //     'success' => true,
+        //     'data' => $posts,
+        //     'message' => 'Successfully fetching posts'
+        //     ]);
+
+        return $this->sendResponse($posts, 'Successfully fetching posts');
     }
 
     /**
